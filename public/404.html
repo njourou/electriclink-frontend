@@ -1,0 +1,15 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Electric Link</title>
+    <script>
+      sessionStorage.setItem(
+        'spa-redirect',
+        location.pathname + location.search + location.hash,
+      )
+      location.replace('/')
+    </script>
+  </head>
+  <body></body>
+</html>

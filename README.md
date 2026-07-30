@@ -64,3 +64,21 @@ npm run preview
 ```
 
 Output is in `dist/`.
+
+## SPA routing (reload 404 fix)
+
+This is a React SPA. Hosts must serve `index.html` for all frontend routes.
+
+Configs included:
+- `public/_redirects` — Netlify / Cloudflare Pages
+- `public/.htaccess` — Apache
+- `vercel.json` — Vercel
+- `public/404.html` + restore in `src/main.tsx` — GitHub Pages
+
+For Nginx:
+
+```nginx
+location / {
+  try_files $uri $uri/ /index.html;
+}
+```
