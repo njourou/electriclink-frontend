@@ -1,0 +1,96 @@
+@import 'tailwindcss';
+
+@theme {
+  --font-sans: 'Montserrat', system-ui, sans-serif;
+
+  /* Live site palette — electriclink.co.ke */
+  --color-brand: #00224d;
+  --color-brand-dark: #001529;
+  --color-brand-light: #003366;
+
+  --color-accent: #ff204e;
+  --color-accent-light: #ff4d6d;
+  --color-tagline: #7d221c;
+
+  --color-surface: #fafafa;
+  --color-surface-alt: #f3f4f6;
+  --color-border: #e5e7eb;
+  --color-muted: #6b7280;
+  --color-charcoal: #111111;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  html,
+  body {
+    font-family: 'Montserrat', system-ui, sans-serif;
+  }
+
+  body {
+    @apply bg-white font-sans text-charcoal antialiased;
+  }
+
+  *,
+  *::before,
+  *::after {
+    font-family: inherit;
+  }
+
+  button,
+  input,
+  textarea,
+  select {
+    font-family: 'Montserrat', system-ui, sans-serif;
+  }
+
+  ::selection {
+    @apply bg-accent/15 text-charcoal;
+  }
+}
+
+@layer utilities {
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+@keyframes hero-zoom {
+  from {
+    transform: scale(1);
+  }
+  to {
+    transform: scale(1.08);
+  }
+}
+
+.hero-zoom {
+  animation: hero-zoom 15s ease-in-out infinite alternate;
+}
+
+@keyframes skeleton-shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+.skeleton-shimmer {
+  background: linear-gradient(
+    90deg,
+    rgba(229, 231, 235, 0.55) 0%,
+    rgba(243, 244, 246, 0.95) 45%,
+    rgba(229, 231, 235, 0.55) 100%
+  );
+  background-size: 200% 100%;
+  animation: skeleton-shimmer 1.2s ease-in-out infinite;
+}
