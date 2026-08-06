@@ -7,6 +7,7 @@ import { CategoryPage } from './pages/CategoryPage'
 import { AboutPage } from './pages/AboutPage'
 import { ServiceCenterPage } from './pages/ServiceCenterPage'
 import { ContactPage } from './pages/ContactPage'
+import { AssistantPage } from './pages/AssistantPage'
 
 const router = createBrowserRouter([
   {
@@ -16,6 +17,7 @@ const router = createBrowserRouter([
       { path: '/products', element: <ProductsPage /> },
       { path: '/products/:id', element: <ProductDetailPage /> },
       { path: '/categories/:slug', element: <CategoryPage /> },
+      { path: '/assistant', element: <AssistantPage /> },
       { path: '/about', element: <AboutPage /> },
       { path: '/service-center', element: <ServiceCenterPage /> },
       { path: '/contact', element: <ContactPage /> },

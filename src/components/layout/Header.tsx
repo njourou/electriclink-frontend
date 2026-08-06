@@ -2,9 +2,11 @@ import { useEffect, useState, type FormEvent } from 'react'
 import { Link, NavLink, useNavigate } from 'react-router-dom'
 import { getProducts } from '../../api/products'
 import { siteConfig } from '../../config/site'
+import { AssistantPopup } from '../assistant/AssistantPopup'
 
 const navLinks = [
   { to: '/', label: 'Home' },
+  { to: '/assistant', label: 'AI Assistant' },
   { to: '/about', label: 'About Us' },
   { to: '/service-center', label: 'Service Center' },
   { to: '/contact', label: 'Contact Us' },
@@ -119,6 +121,9 @@ export function Header() {
               </button>
             </div>
           </form>
+
+          {/* ELIA — sales assistant popup, next to search */}
+          <AssistantPopup />
 
           <div className="ml-auto hidden items-center gap-5 lg:flex">
             <Link
