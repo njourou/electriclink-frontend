@@ -7,7 +7,7 @@ import { readFile } from 'node:fs/promises'
 const PORT = 8787
 const BACKEND = 'https://backend.electriclink.co.ke/api'
 const LLM_URL = 'http://localhost:20128/v1/chat/completions'
-const LLM_MODEL = 'oc/deepseek-v4-flash-free'
+const MODEL = 'oc/nemotron-3-ultra-free'
 
 let catalogCache = { products: [], index: '', ts: 0 }
 const CACHE_TTL_MS = 5 * 60 * 1000
@@ -58,7 +58,7 @@ async function callLLM(messages, temperature = 0.4, maxTokens = 900) {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({
-      model: LLM_MODEL,
+      model: MODEL,
       messages,
       temperature,
       max_tokens: maxTokens,

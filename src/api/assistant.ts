@@ -13,8 +13,13 @@ interface AssistantReply {
 }
 
 async function postToAssistant(message: string, history: AssistantMessage[]): Promise<AssistantReply> {
-  // Try the Vite-proxied endpoint, then the direct server URL
-  const endpoints = ['/assistant-api/assistant', 'http://localhost:8787/assistant']
+  // Try the Vite-proxied endpoint, then the tunnel URL (if set), then the direct server URL
+  const tunnelUrl = import.meta.env.VITE_ELIA_URL
+  const endpoints = [
+    '/assistant-api/assistant',
+    ...(tunnelUrl ? [`${tunnelUrl.replace(/\/$/, '')}/assistant`] : []),
+    'http://localhost:8787/assistant',
+  ]
   let lastError: unknown
 
   for (const endpoint of endpoints) {
