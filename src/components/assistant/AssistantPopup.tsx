@@ -55,21 +55,21 @@ export function AssistantPopup() {
   const [loading, setLoading] = useState(false)
   const scrollRef = useRef<HTMLDivElement>(null)
 
-  // Auto-open on every visit, unless the user dismissed it before
+  // Auto-open on every visit, unless the user dismissed it in this session
   useEffect(() => {
     try {
-      if (!localStorage.getItem(STORAGE_KEY)) {
+      if (!sessionStorage.getItem(STORAGE_KEY)) {
         const timer = setTimeout(() => setOpen(true), 800)
         return () => clearTimeout(timer)
       }
     } catch {
-      // localStorage unavailable — don't auto-open
+      // sessionStorage unavailable — don't auto-open
     }
   }, [])
 
   function dismiss() {
     try {
-      localStorage.setItem(STORAGE_KEY, '1')
+      sessionStorage.setItem(STORAGE_KEY, '1')
     } catch {
       // ignore
     }
